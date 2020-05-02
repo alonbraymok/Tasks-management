@@ -6,8 +6,9 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import "./index.css";
 import { Router } from "./router";
+import taskReducer from "./store/reducers/task";
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({ taskReducer });
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
