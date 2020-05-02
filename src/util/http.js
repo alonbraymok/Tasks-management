@@ -1,7 +1,7 @@
 import axios from "axios";
 const baseURL = `http://localhost:8080/`;
 
-export const getData = async (request) => {
+export const httpRequest = async (request) => {
   const {
     url,
     method = "POST",

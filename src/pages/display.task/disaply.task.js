@@ -1,13 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { Wrapper, TaskWrapper, DeleteTaskWrapper } from "./disaply.task.styled";
+import {
+  Wrapper,
+  TaskWrapper,
+  DeleteTaskWrapper,
+  EditWrapper,
+} from "./disaply.task.styled";
 import { CommonText } from "../../components/reuseable.components/text/text";
 import { useParams } from "react-router-dom";
-import { getTaskById, deleteTaskById } from "../../services/task/task";
-import { CommonButton } from "../../components/reuseable.components";
+import {
+  getTaskById,
+  deleteTaskById,
+  createTask,
+} from "../../services/task/task";
+import {
+  CommonButton,
+  CommonInput,
+} from "../../components/reuseable.components";
 
-export function DisplayTask() {
+export function DisplayTask({ history }) {
   let { taskId } = useParams();
   const [task, setTask] = useState(null);
+  const [taskName, setTaskName] = useState("");
+  const [taskDescription, setTaskDescription] = useState("");
   const [isTaskDelete, setIsTaskDelete] = useState(false);
 
   useEffect(() => {
@@ -22,6 +36,20 @@ export function DisplayTask() {
   async function handleDeleteTask() {
     const response = await deleteTaskById(taskId);
     setIsTaskDelete(response);
+
+    setTimeout(() => reDirectToTasksList(), 2000);
+  }
+
+  async function handleEditTask() {
+    const newTask = { ...task };
+    newTask.title = taskName;
+    newTask.description = taskDescription;
+
+    createTask(newTask);
+  }
+
+  function reDirectToTasksList() {
+    history.push("/create");
   }
 
   return (
@@ -45,6 +73,23 @@ export function DisplayTask() {
           )}
         </>
       )}
+      <EditWrapper>
+        <CommonText value={"Edit Task"} />
+        <CommonInput
+          placeholder={"New Task name"}
+          value={taskName}
+          onChange={(e) => setTaskName(e.target.value)}
+        />
+
+        <CommonInput
+          placeholder={"New Task description"}
+          value={taskDescription}
+          onChange={(e) => setTaskDescription(e.target.value)}
+        />
+        <DeleteTaskWrapper>
+          <CommonButton title={"Edit"} onClick={handleEditTask} />
+        </DeleteTaskWrapper>
+      </EditWrapper>
     </Wrapper>
   );
 }

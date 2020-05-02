@@ -9,6 +9,15 @@ export const Wrapper = styled.div`
   flex-direction: column;
 `;
 
+export const EditWrapper = styled.div`
+  width: 400px;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
 export const TaskWrapper = styled.div`
   padding: 30px;
   border: solid 2px #000;

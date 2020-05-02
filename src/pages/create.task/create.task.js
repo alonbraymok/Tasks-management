@@ -5,6 +5,7 @@ import { createTask } from "../../services/task/task";
 import { TasksList } from "../../components/tasks.list/tasks.list/tasks.list";
 import { useDispatch, useSelector, batch } from "react-redux";
 import { setTasks } from "../../store/actions/task";
+import { InputWrapper, Wrapper } from "./create.task.styled";
 
 export function CreateTask({ history }) {
   const [taskName, setTaskName] = useState("");
@@ -36,20 +37,24 @@ export function CreateTask({ history }) {
   }
 
   return (
-    <>
-      <CommonInput
-        placeholder={"Task name"}
-        value={taskName}
-        onChange={(e) => setTaskName(e.target.value)}
-      />
-      <CommonInput
-        placeholder={"Task description"}
-        value={taskDescription}
-        onChange={(e) => setTaskDescription(e.target.value)}
-      />
+    <Wrapper>
+      <InputWrapper>
+        <CommonInput
+          placeholder={"Task name"}
+          value={taskName}
+          onChange={(e) => setTaskName(e.target.value)}
+        />
+      </InputWrapper>
+      <InputWrapper>
+        <CommonInput
+          placeholder={"Task description"}
+          value={taskDescription}
+          onChange={(e) => setTaskDescription(e.target.value)}
+        />
+      </InputWrapper>
       <CommonButton title={"Create Task"} onClick={() => handleCreateTask()} />
       <div>Task</div>
       <TasksList push={history.push} />
-    </>
+    </Wrapper>
   );
 }

@@ -1,8 +1,8 @@
-import { getData } from "../../util/http";
+import { httpRequest } from "../../util/http";
 
 export async function createTask(data) {
   try {
-    const response = await getData({
+    const response = await httpRequest({
       url: "task/create",
       ...data,
     });
@@ -16,7 +16,7 @@ export async function createTask(data) {
 
 export async function getTasks() {
   try {
-    const response = await getData({
+    const response = await httpRequest({
       url: "tasks",
       method: "GET",
     });
@@ -28,7 +28,7 @@ export async function getTasks() {
 
 export async function getTaskById(id) {
   try {
-    const response = await getData({
+    const response = await httpRequest({
       url: `task/${id}`,
       method: "GET",
     });
@@ -40,7 +40,7 @@ export async function getTaskById(id) {
 
 export async function deleteTaskById(id) {
   try {
-    const response = await getData({
+    const response = await httpRequest({
       url: `task/delete/${id}`,
       method: "DELETE",
     });
