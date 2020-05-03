@@ -1,6 +1,7 @@
 import { httpRequest } from "../../util/http";
 
 export async function createTask(data) {
+  console.log({ data });
   try {
     const response = await httpRequest({
       url: "task/create",
@@ -17,7 +18,7 @@ export async function createTask(data) {
 export async function getTasks() {
   try {
     const response = await httpRequest({
-      url: "tasks",
+      url: "task/tasks",
       method: "GET",
     });
     return response.tasks;
@@ -29,7 +30,7 @@ export async function getTasks() {
 export async function getTaskById(id) {
   try {
     const response = await httpRequest({
-      url: `task/${id}`,
+      url: `task/task/${id}`,
       method: "GET",
     });
     return response.task;
@@ -41,7 +42,7 @@ export async function getTaskById(id) {
 export async function deleteTaskById(id) {
   try {
     const response = await httpRequest({
-      url: `task/delete/${id}`,
+      url: `task/task/delete/${id}`,
       method: "DELETE",
     });
     if (response.status) {

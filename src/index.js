@@ -7,8 +7,9 @@ import thunk from "redux-thunk";
 import "./index.css";
 import { Router } from "./router";
 import taskReducer from "./store/reducers/task";
+import userReducer from "./store/reducers/user";
 
-const rootReducer = combineReducers({ taskReducer });
+const rootReducer = combineReducers({ taskReducer, userReducer });
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 

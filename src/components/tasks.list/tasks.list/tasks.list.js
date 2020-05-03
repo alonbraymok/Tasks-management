@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setTasks } from "../../../store/actions/task";
 import { TaskItemList } from "../task.list.item/task.list.item";
