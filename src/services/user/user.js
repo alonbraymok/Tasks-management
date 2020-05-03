@@ -1,19 +1,5 @@
 import { httpRequest } from "../../util/http";
 
-export async function test() {
-  try {
-    const response = await httpRequest({
-      url: "user/test",
-    });
-    if (!response.err) {
-      console.log("Error");
-    }
-    console.log({ response });
-  } catch (err) {
-    console.log("Error", err);
-  }
-}
-
 export async function createUser(data) {
   try {
     const response = await httpRequest({

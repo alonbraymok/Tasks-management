@@ -1,6 +1,5 @@
 import React from "react";
 import { NavBarWrapper, ButtonWrapper } from "./navbar.styled";
-import { test } from "../../../services/user/user";
 
 export default function Navbar({ user, push }) {
   function redirectTo(path) {
@@ -9,7 +8,6 @@ export default function Navbar({ user, push }) {
 
   return (
     <NavBarWrapper>
-      <ButtonWrapper onClick={() => test()}>{"Test"}</ButtonWrapper>
       <ButtonWrapper onClick={() => redirectTo("create")}>
         {"Tasks"}
       </ButtonWrapper>
