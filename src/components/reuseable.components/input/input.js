@@ -12,6 +12,7 @@ export const Input = styled.input`
   font-size: 15px;
   font-weight: 500;
   color: #b2b5d1;
+  outline: none;
   ::placeholder {
     font-family: Rubik;
     font-size: 15px;
