@@ -1,23 +1,30 @@
 import styled from "styled-components";
 import React from "react";
 
+export const LoginWrapper = styled.div`
+  height: 45px;
+  border-radius: 7px;
+  background-color: #f1f2f7;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+`;
+
 export const Input = styled.input`
-  width: 100%;
-  height: 60px;
-  padding: 10px;
-  border-radius: 10px;
-  background-color: transparent;
-  border: solid 2px #b2b5d1;
   font-family: Rubik;
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 20px;
+  width: 200px;
+  /* font-weight: bold; */
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
   color: #b2b5d1;
+  border: none;
   outline: none;
-  ::placeholder {
-    font-family: Rubik;
-    font-size: 15px;
-    font-weight: 500;
-    color: #b2b5d1;
+  background-color: transparent;
+  :focus {
+    outline: none;
   }
 `;
 export function CommonInput({ placeholder, value, onChange }) {

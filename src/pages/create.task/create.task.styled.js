@@ -11,3 +11,20 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const PriorityWrapper = styled.div`
+  display: flex;
+  margin: 20px 0;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+export const PriorityTag = styled.div`
+  padding: 10px;
+  border-radius: 4px;
+  width: fit-content;
+  background: ${({ bgColor }) => bgColor};
+  cursor: pointer;
+  border: ${({ selected }) =>
+    selected ? "solid 2px #fff" : "solid 2px transparent"};
+`;

@@ -2,6 +2,11 @@ import React, { useLayoutEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setTasks } from "../../../store/actions/task";
 import { TaskItemList } from "../task.list.item/task.list.item";
+import styled from "styled-components";
+
+const TaskItemWrapper = styled.div`
+  margin: 20px;
+`;
 
 export function TasksList({ push }) {
   const dispatch = useDispatch();
@@ -14,7 +19,9 @@ export function TasksList({ push }) {
 
   function renderTasks() {
     return tasks.map((task, index) => (
-      <TaskItemList task={task} key={index} index={index} push={push} />
+      <TaskItemWrapper key={index}>
+        <TaskItemList task={task} index={index} push={push} />
+      </TaskItemWrapper>
     ));
   }
 
