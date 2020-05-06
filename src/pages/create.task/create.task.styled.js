@@ -26,5 +26,5 @@ export const PriorityTag = styled.div`
   background: ${({ bgColor }) => bgColor};
   cursor: pointer;
   border: ${({ selected }) =>
-    selected ? "solid 2px #fff" : "solid 2px transparent"};
+    selected ? "solid 2px #fff" : "solid 2px rgb(55, 58, 71)"};
 `;

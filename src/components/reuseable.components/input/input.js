@@ -27,6 +27,13 @@ export const Input = styled.input`
     outline: none;
   }
 `;
-export function CommonInput({ placeholder, value, onChange }) {
-  return <Input placeholder={placeholder} value={value} onChange={onChange} />;
+export function CommonInput({ placeholder, value, onChange, style }) {
+  return (
+    <Input
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+      style={{ ...style }}
+    />
+  );
 }

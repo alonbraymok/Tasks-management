@@ -8,6 +8,11 @@ const TaskItemWrapper = styled.div`
   margin: 20px;
 `;
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
 export function TasksList({ push }) {
   const dispatch = useDispatch();
 
@@ -25,5 +30,5 @@ export function TasksList({ push }) {
     ));
   }
 
-  return renderTasks();
+  return <Wrapper>{renderTasks()}</Wrapper>;
 }

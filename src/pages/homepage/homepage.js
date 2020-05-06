@@ -4,6 +4,7 @@ import Navbar from "../../components/homepage/navbar/navbar";
 import { TasksList } from "../../components/tasks.list/tasks.list/tasks.list";
 import SideMenu from "../../components/side.menu/side.menu";
 import { TaskListContainer } from "./homepage.styled";
+import TreeComponent from "../../components/test/test";
 
 export function Homepage({ history }) {
   const user = useSelector(({ userReducer }) => userReducer.user);
@@ -15,6 +16,7 @@ export function Homepage({ history }) {
       <Navbar user={user} push={history.push} />
       <SideMenu right={true} />
       <TaskListContainer>
+        <TreeComponent />
         <TasksList push={history.push} />
       </TaskListContainer>
     </>
