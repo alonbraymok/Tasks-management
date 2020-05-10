@@ -16,11 +16,11 @@ export function Homepage({ history }) {
   return (
     <>
       <div>.</div>
-      <Navbar user={user} push={history.push} />
+      {/* <Navbar user={user} push={history.push} />
       <SideMenu right={true} />
       <TaskListContainer>
         <TasksList push={history.push} />
-      </TaskListContainer>
+      </TaskListContainer> */}
     </>
   );
 }
