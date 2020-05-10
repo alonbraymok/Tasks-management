@@ -15,7 +15,6 @@ export function Homepage({ history }) {
 
   return (
     <>
-      <CommonText value={"Coming soon"} />
       <Navbar user={user} push={history.push} />
       <SideMenu right={true} />
       <TaskListContainer>

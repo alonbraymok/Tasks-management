@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseURL = `http://localhost:8080/`;
+const baseURL = `http://ec2-18-218-103-21.us-east-2.compute.amazonaws.com:8080/`;
 
 export const httpRequest = async (request) => {
   const {
