@@ -26,7 +26,7 @@ export default function Navbar({ user, push }) {
         <ButtonWrapper onClick={() => redirectTo("create")}>
           <CommonText value={"Tasks"} size={"20px"} />
         </ButtonWrapper>
-        <ButtonWrapper onClick={() => redirectTo("auth")}>
+        <ButtonWrapper onClick={() => redirectTo("signup")}>
           <CommonText value={"Sign up"} size={"20px"} />
         </ButtonWrapper>
       </SectionWrapper>
@@ -36,7 +36,7 @@ export default function Navbar({ user, push }) {
             <UserWrapper>
               <CommonText value={`Hello: ${user.name}`} size={"20px"} />
             </UserWrapper>
-            <ProfileImage src={nikol} />
+            <ProfileImage src={user.imageUrl} />
           </>
         ) : (
           <Login />

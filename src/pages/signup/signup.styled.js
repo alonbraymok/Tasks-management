@@ -49,4 +49,21 @@ export const CreateAccount = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+`;
+
+export const ProfileAvatar = styled.div`
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  border: dashed 2px #9e9ea7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+`;
+export const ProfileImage = styled.img`
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
 `;

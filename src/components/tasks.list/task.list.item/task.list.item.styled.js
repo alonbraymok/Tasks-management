@@ -40,3 +40,11 @@ export const DescriptionArea = styled.textarea`
   background-repeat: no-repeat;
   outline: none;
 `;
+
+export const TaskImage = styled.img`
+  margin: 10px 0;
+  width: 100%;
+  height: 120px;
+  border-radius: 4px;
+  object-fit: contain;
+`;

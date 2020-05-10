@@ -8,7 +8,6 @@ export const setTasks = (tasks) => async (dispatch, getState) => {
   } else {
     newTasks = await getTasks();
   }
-  console.log({ newTasks });
   dispatch({
     type: SET_TASKS,
     payload: newTasks,

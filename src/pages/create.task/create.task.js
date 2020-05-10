@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect, useEffect } from "react";
+import React, { useState, useLayoutEffect, useEffect, useRef } from "react";
 import { CommonInput } from "../../components/reuseable.components/input/input";
 import { CommonButton } from "../../components/reuseable.components/button/button";
 import { createTask } from "../../services/task/task";
@@ -9,8 +9,11 @@ import {
   Wrapper,
   PriorityWrapper,
   PriorityTag,
+  UploadImageWrapper,
+  ImageWrapper,
 } from "./create.task.styled";
 import { CommonText } from "../../components/reuseable.components/text/text";
+import { uploadImageToCloudinary } from "../../util/cloudinary";
 
 const priorities = ["HIGH", "MID", "LOW"];
 
@@ -18,6 +21,8 @@ export function CreateTask({ history }) {
   const [taskName, setTaskName] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
   const [taskPriority, setTaskPriority] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
+  const imageInputRef = useRef(null);
 
   const tasks = useSelector(({ taskReducer }) => taskReducer.tasks);
 
@@ -28,14 +33,24 @@ export function CreateTask({ history }) {
   }, []);
 
   function handleCreateTask() {
-    const task = {
-      title: taskName,
-      description: taskDescription,
-      priority: taskPriority,
-    };
-    createTask(task);
-    initialStateValues();
-    dispatch(setTasks([...tasks, task]));
+    const { files } = document.querySelector('input[type="file"]');
+    uploadImageToCloudinary(files[0])
+      .then((res) => res.json())
+      .then((res) => {
+        const task = {
+          title: taskName,
+          description: taskDescription,
+          priority: taskPriority,
+          imageUrl: res.secure_url,
+          creator: {
+            name: "",
+          },
+        };
+        createTask(task);
+        initialStateValues();
+        dispatch(setTasks([...tasks, task]));
+      })
+      .catch((err) => console.log(err));
   }
 
   function initialStateValues() {
@@ -43,6 +58,16 @@ export function CreateTask({ history }) {
       setTaskDescription("");
       setTaskName("");
     });
+  }
+
+  function onImageChange(event) {
+    if (event.target.files && event.target.files[0]) {
+      setImageUrl(URL.createObjectURL(event.target.files[0]));
+    }
+  }
+
+  function handleOnChangeInput() {
+    imageInputRef.current.click();
   }
 
   function handlePriorityColor(priority) {
@@ -88,7 +113,23 @@ export function CreateTask({ history }) {
         />
       </InputWrapper>
       <PriorityWrapper>{renderPriorities()}</PriorityWrapper>
+
+      <ImageWrapper>
+        {imageUrl ? (
+          <img id="target" src={imageUrl} width={"100%"} height={"400px"} />
+        ) : (
+          <UploadImageWrapper onClick={handleOnChangeInput}>
+            <CommonText value={"Image upload"} color={"#fff"} />
+          </UploadImageWrapper>
+        )}
+      </ImageWrapper>
       <CommonButton title={"Create Task"} onClick={() => handleCreateTask()} />
+      <input
+        type="file"
+        ref={imageInputRef}
+        onChange={onImageChange}
+        style={{ opacity: 0 }}
+      />
     </Wrapper>
   );
 }

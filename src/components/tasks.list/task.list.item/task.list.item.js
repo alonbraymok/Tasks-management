@@ -5,11 +5,12 @@ import {
   TextWrapper,
   DescriptionArea,
   PriorityTag,
+  TaskImage,
 } from "./task.list.item.styled";
 import { CommonText } from "../../reuseable.components/text/text";
 
 export function TaskItemList({ task, index, push }) {
-  const { title, description, _id, priority, creator } = task;
+  const { title, description, imageUrl, priority, creator } = task;
 
   function handleTaskClick() {
     // push(`task/${_id}`);
@@ -42,6 +43,7 @@ export function TaskItemList({ task, index, push }) {
         <PriorityTag color={() => handlePriorityColor(priority)}>
           <CommonText value={`${priority} priority`} color={"#fff"} />
         </PriorityTag>
+        {imageUrl && <TaskImage src={imageUrl} alt="" />}
         <TextWrapper>
           <DescriptionArea value={description} />
         </TextWrapper>

@@ -9,6 +9,7 @@ export async function createUser(data) {
     if (!response.err) {
       console.log("Error");
     }
+    console.log({ response });
     return response.data;
   } catch (err) {
     console.log("Error", err);
