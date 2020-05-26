@@ -1,2 +1,9 @@
 # Tasks-management
-web app for tasks management
+Web app for tasks management
+
+
+git clone 
+
+npm install
+
+npm start
