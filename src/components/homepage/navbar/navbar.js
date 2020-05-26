@@ -23,9 +23,6 @@ export default function Navbar({ user, push }) {
           <CommonText value={"TASK MANAGEMENT"} size={"25px"} />
           <CommonText value={"FOR NIKOL"} size={"15px"} />
         </TitleWrapper>
-        <ButtonWrapper onClick={() => redirectTo("create")}>
-          <CommonText value={"Tasks"} size={"20px"} />
-        </ButtonWrapper>
         <ButtonWrapper onClick={() => redirectTo("signup")}>
           <CommonText value={"Sign up"} size={"20px"} />
         </ButtonWrapper>
